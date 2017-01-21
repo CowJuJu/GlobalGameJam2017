@@ -3,16 +3,15 @@
 public class PlayerMovement : MonoBehaviour
 {
     public string player;
+    public float maxSpeed = 0.3f;
 
-    float speed = 6f;
-    Vector3 movement;
+    Vector3 velocity;
     Rigidbody playerRigidbody;
 
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
     }
-
 
     void FixedUpdate()
     {
@@ -21,24 +20,27 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw(horizontal);
         float v = Input.GetAxisRaw(vertical);
 
-        if(Input.GetAxisRaw(horizontal) > 0)
-        {
-            //Debug.Log(Input.GetAxisRaw(horizontal));
-        }
-
-        if (Input.GetButton("Button 1"))
-        {
-            Debug.Log(player);
-        }
-
-        Move(h, v);
+        Rotate(h, v);
+        Move(h, v); 
     }
 
     void Move(float h, float v)
     {
-        movement.Set(h, 0f, v);
-        movement = movement.normalized * speed * Time.deltaTime;
+        var direction = new Vector3(h, 0.0f, v);
+        var force = direction.normalized * maxSpeed * Time.deltaTime;
 
-        playerRigidbody.MovePosition(transform.position + movement);
+        Vector3 movement = new Vector3(h, 0.0f, v);
+        playerRigidbody.AddForce(force);
+    }
+
+    void Rotate(float h, float v)
+    {
+        if (h == 0 && v == 0)
+        {
+        }
+        else
+        {
+            playerRigidbody.transform.eulerAngles = new Vector3(playerRigidbody.transform.eulerAngles.x, Mathf.Atan2(h, v) * Mathf.Rad2Deg, playerRigidbody.transform.eulerAngles.z);
+        }
     }
 }
