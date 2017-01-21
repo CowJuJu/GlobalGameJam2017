@@ -2,36 +2,43 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float speed = 6f;            // The speed that the player will move at.
+    public string player;
 
-	Vector3 movement;                   // The vector to store the direction of the player's movement.
-	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
+    float speed = 6f;
+    Vector3 movement;
+    Rigidbody playerRigidbody;
 
-	void Awake ()
-	{
-		playerRigidbody = GetComponent <Rigidbody> ();
-	}
+    void Awake()
+    {
+        playerRigidbody = GetComponent<Rigidbody>();
+    }
 
 
-	void FixedUpdate ()
-	{
-		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+    void FixedUpdate()
+    {
+        var horizontal = "Horizontal_P" + player;
+        var vertical = "Vertical_P" + player;
+        float h = Input.GetAxisRaw(horizontal);
+        float v = Input.GetAxisRaw(vertical);
 
-		// Move the player around the scene.
-		Move (h, v);
-	}
+        if(Input.GetAxisRaw(horizontal) > 0)
+        {
+            //Debug.Log(Input.GetAxisRaw(horizontal));
+        }
 
-	void Move (float h, float v)
-	{
-		// Set the movement vector based on the axis input.
-		movement.Set (h, 0f, v);
+        if (Input.GetButton("Button 1"))
+        {
+            Debug.Log(player);
+        }
 
-		// Normalise the movement vector and make it proportional to the speed per second.
-		movement = movement.normalized * speed * Time.deltaTime;
+        Move(h, v);
+    }
 
-		// Move the player to it's current position plus the movement.
-		playerRigidbody.MovePosition (transform.position + movement);
-	}
+    void Move(float h, float v)
+    {
+        movement.Set(h, 0f, v);
+        movement = movement.normalized * speed * Time.deltaTime;
+
+        playerRigidbody.MovePosition(transform.position + movement);
+    }
 }
