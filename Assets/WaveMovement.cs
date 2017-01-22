@@ -2,15 +2,16 @@
 
 public class WaveMovement : MonoBehaviour {
     public float speed;
+    public float multiplier;
 
     float strength;
     bool increasing;
 
     void Start()
     {
-        strength = 1.0f;
+        strength = multiplier * 2f;
         increasing = true;
-        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+        GetComponent<Rigidbody>().velocity = transform.forward * speed * multiplier;
     }
 
     void FixedUpdate()
@@ -34,7 +35,6 @@ public class WaveMovement : MonoBehaviour {
         }
 
         var color = new Color(1, 1 - (float)(strength * 0.11), 1 - (float)(strength * 0.11));
-        Debug.Log(color);
         GetComponent<Renderer>().material.color = color;
     }
 

@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public string player;
     public float maxSpeed = 0.3f;
+    public bool canMove;
 
     Vector3 velocity;
     Rigidbody playerRigidbody;
@@ -21,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
         float v = Input.GetAxisRaw(vertical);
 
         Rotate(h, v);
-        Move(h, v); 
+        if (canMove)
+        {
+            Move(h, v);
+        }
     }
 
     void Move(float h, float v)
