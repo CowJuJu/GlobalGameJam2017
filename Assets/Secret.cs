@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
+    public AudioSource krakenSummon;
+    public AudioSource krakenScream;
     bool activate = false;
     float time = 0;
 
@@ -17,6 +19,8 @@ public class Secret : MonoBehaviour
             time += Time.deltaTime;
             if (time > 16)
             {
+                krakenSummon.Play();
+                krakenScream.Play();
                 activate = true;
             }
         }

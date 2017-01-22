@@ -16,6 +16,7 @@ public class PlayerSelect : MonoBehaviour
     float fade = 0;
 
     public Texture2D img;
+    public AudioSource audioClip;
 
     Texture2D fadeTexture;
     float counter = 0;
@@ -44,6 +45,7 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonDown("Fire_P1") && !playerOneReady)
         {
+            audioClip.Play();
             playerOneReady = true;
             var p1 = GameObject.Find("P1");
             p1.transform.position = new Vector3(p1.transform.position.x, p1.transform.position.y, -3);
@@ -53,6 +55,7 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonDown("Fire_P2") && !playerTwoReady)
         {
+            audioClip.Play();
             playerTwoReady = true;
             var p2 = GameObject.Find("P2");
             p2.transform.position = new Vector3(p2.transform.position.x, p2.transform.position.y, -3);
@@ -62,6 +65,7 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonDown("Fire_P3") && !playerThreeReady)
         {
+            audioClip.Play();
             playerThreeReady = true;
             var p3 = GameObject.Find("P3");
             p3.transform.position = new Vector3(p3.transform.position.x, p3.transform.position.y, -3);
@@ -71,6 +75,7 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonDown("Fire_P4") && !playerFourReady)
         {
+            audioClip.Play();
             playerFourReady = true;
             var p4 = GameObject.Find("P4");
             p4.transform.position = new Vector3(p4.transform.position.x, p4.transform.position.y, -3);

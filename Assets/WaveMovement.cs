@@ -34,8 +34,13 @@ public class WaveMovement : MonoBehaviour {
             }
         }
 
-        var color = new Color(1, 1 - (float)(strength * 0.11), 1 - (float)(strength * 0.11));
+        var color = new Color(0.2f + (float)(strength * 0.11), 0.2f + (float)(strength * 0.11), 1);
         GetComponent<Renderer>().material.color = color;
+        var model = transform.Find("Model");
+        model.GetComponent<Renderer>().material.color = color;
+        model.transform.localScale = new Vector3(model.transform.localScale.x, 0.3f + strength * 0.05f, 0.5f + strength * 0.25f);
+
+
     }
 
     public float GetStrength() { return strength; }

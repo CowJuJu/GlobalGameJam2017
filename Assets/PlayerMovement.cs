@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public string player;
     public float maxSpeed = 0.3f;
     public bool isAlive = true;
+    public AudioSource death;
 
     Vector3 velocity;
     Rigidbody playerRigidbody;
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.useGravity = true;
             playerRigidbody.constraints = RigidbodyConstraints.None;
             isAlive = false;
+            death.Play();
         }
     }
 

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class WhirlPoolCollision : MonoBehaviour
 {
+    public AudioSource whirlpool;
+
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Whirlpool")
         {
+            whirlpool.Play();
             var rigid = GetComponent<Rigidbody>();
             rigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             rigid.drag = 0;

@@ -12,6 +12,13 @@ public class Level : MonoBehaviour {
     float fade = .9f;
 
     float timer = 4;
+    public AudioSource BGMusic;
+    public AudioSource HiTone;
+    public AudioSource LoTone;
+
+    bool played3 = false;
+    bool played2 = false;
+    bool played1 = false;
 
     Texture2D texture;
 
@@ -28,8 +35,26 @@ public class Level : MonoBehaviour {
             if (timer >= 0)
             {
                 timer -= Time.deltaTime;
-                if (timer < 1)
+                if (timer < 4 && !played3)
                 {
+                    HiTone.Play();
+                    played3 = true;
+                }
+                if (timer < 3 && !played2)
+                {
+                    HiTone.Play();
+                    played2 = true;
+                }
+                if (timer < 2 && !played1)
+                {
+                    HiTone.Play();
+                    played1 = true;
+                }
+
+                if (timer < 1 && preventMovement)
+                {
+                    LoTone.Play();
+                    BGMusic.Play();
                     preventMovement = false;
                 }
             }
