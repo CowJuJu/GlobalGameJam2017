@@ -7,7 +7,7 @@ public class StartGame : MonoBehaviour
     {
         if (Input.GetButton("Fire_P2"))
         {
-            SceneManager.LoadScene("InGame", LoadSceneMode.Single);
+            SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
         }
     }
 }

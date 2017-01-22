@@ -9,7 +9,7 @@ public class WaveMovement : MonoBehaviour {
 
     void Start()
     {
-        strength = multiplier * 2f;
+        strength = 1f;
         increasing = true;
         GetComponent<Rigidbody>().velocity = transform.forward * speed * multiplier;
     }

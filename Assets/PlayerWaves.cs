@@ -14,25 +14,26 @@ public class PlayerWaves : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire_P" + player) && Time.time > nextFire)
+        if (GetComponent<PlayerMovement>().isAlive && !GameObject.Find("LevelManager").GetComponent<Level>().preventMovement)
         {
-            GetComponent<PlayerMovement>().canMove = false;
-            strength = 1f;
-        }
+            if (Input.GetButtonDown("Fire_P" + player) && Time.time > nextFire)
+            {
+                strength = 1f;
+            }
 
-        if (Input.GetButton("Fire_P" + player))
-        {
-            strength += 0.5f * Time.deltaTime;
-            strength = Mathf.Clamp(strength, 1f, 1.75f);
-        }
+            if (Input.GetButton("Fire_P" + player))
+            {
+                strength += 0.5f * Time.deltaTime;
+                strength = Mathf.Clamp(strength, 1f, 1.75f);
+            }
 
-        if (Input.GetButtonUp("Fire_P" + player) && Time.time > nextFire)
-        {  
-            nextFire = Time.time + fireRate;
-            var wave = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-            wave.GetComponent<WaveMovement>().multiplier = strength;
-            GetComponent<PlayerMovement>().canMove = true;
+            if (Input.GetButtonUp("Fire_P" + player) && Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                var wave = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                wave.GetComponent<WaveMovement>().multiplier = strength;
+            }
+
         }
-        
     }
 }
