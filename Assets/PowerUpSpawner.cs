@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PowerUpSpawner : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class PowerUpSpawner : MonoBehaviour {
     {
         delay += Time.deltaTime;
 
-        if(!powerUpExists && delay > 20)
+        if(!powerUpExists && delay > 20 && SceneManager.GetActiveScene().name != "LevelFive")
         {
             powerUpExists = true;
 
