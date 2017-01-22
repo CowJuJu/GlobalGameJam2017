@@ -8,7 +8,6 @@ public class WhirlPoolCollision : MonoBehaviour
     {
         if (other.tag == "Whirlpool")
         {
-            Debug.Log("Whirlpool");
             var rigid = GetComponent<Rigidbody>();
             rigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             rigid.drag = 0;

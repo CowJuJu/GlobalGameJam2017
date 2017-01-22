@@ -13,11 +13,11 @@ public class Level : MonoBehaviour {
 
     float timer = 4;
 
-    Texture2D texture = new Texture2D(1, 1, TextureFormat.ARGB32, false);
+    Texture2D texture;
 
     void Start()
     {
-        texture.SetPixel(0, 0, new Color(0, 0, 0));
+        texture = new Texture2D(1, 1, TextureFormat.ARGB32, false);
     }
     
 
@@ -112,7 +112,7 @@ public class Level : MonoBehaviour {
                             SceneManager.LoadScene("LevelFive");
                             break;
                         case "LevelFive":
-                            SceneManager.LoadScene("Menu");
+                            SceneManager.LoadScene("ScoreSCreen");
                             break;
                     }
                 }

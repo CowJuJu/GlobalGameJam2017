@@ -22,7 +22,6 @@ public class Secret : MonoBehaviour
         }
         else
         {
-            Debug.Log("Activated");
             var whirlpool = GameObject.Find("Whirlpool");
             var tentacle = GameObject.Find("Tentacle");
 

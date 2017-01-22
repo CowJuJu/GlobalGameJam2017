@@ -11,6 +11,7 @@ public class DBScript : MonoBehaviour
 
     void Awake()
     {
+        ResetScores();
         if(created)
         {
             Destroy(gameObject);
@@ -32,17 +33,5 @@ public class DBScript : MonoBehaviour
         playerTwoScore = 0;
         playerThreeScore = 0;
         playerFourScore = 0;
-    }
-
-    void OnGUI()
-    {
-        GUIStyle myStyle = new GUIStyle();
-        myStyle.fontSize = 60;
-        myStyle.normal.textColor = Color.white;
-
-        if (SceneManager.GetActiveScene().name != "Menu")
-        {
-            GUI.Label(new Rect(20, 20, 100, 20), playerTwoScore + "", myStyle);
-        }
     }
 }
