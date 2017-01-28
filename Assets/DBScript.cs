@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DBScript : MonoBehaviour
@@ -9,8 +10,12 @@ public class DBScript : MonoBehaviour
     public float playerThreeScore = 0;
     public float playerFourScore = 0;
 
+    public List<int> players;
+
     void Awake()
     {
+        players = new List<int>();
+
         ResetScores();
         if(created)
         {

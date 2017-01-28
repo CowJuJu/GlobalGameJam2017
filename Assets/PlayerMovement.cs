@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(float h, float v)
     {
+        Debug.Log(maxSpeed);
         if(poweredUp)
         {
             powerTime -= Time.deltaTime;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = new Vector3(1f, 1f, 1f);
                 transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
                 poweredUp = false;
+                maxSpeed = 900f;
             }
         }
         var direction = new Vector3(h, 0.0f, v);

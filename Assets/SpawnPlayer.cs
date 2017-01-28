@@ -8,7 +8,8 @@ public class SpawnPlayer : MonoBehaviour
 
     void Start()
     {
-        var players = Input.GetJoystickNames();
+        var playerData = GameObject.Find("Database").GetComponent<DBScript>();
+        var players = playerData.players.ToArray();
 
         for (var i = 0; i < Mathf.Min(players.Length, 4); i++)
         {
@@ -40,8 +41,8 @@ public class SpawnPlayer : MonoBehaviour
             }
 
             var player = (GameObject)Instantiate(ship, position, rotation);
-            player.GetComponent<PlayerMovement>().player = "" + (i + 1);
-            player.GetComponent<PlayerWaves>().player = "" + (i + 1);
+            player.GetComponent<PlayerMovement>().player = "" + (players[i]);
+            player.GetComponent<PlayerWaves>().player = "" + (players[i]);
 
 
 

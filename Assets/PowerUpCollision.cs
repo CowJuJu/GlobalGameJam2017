@@ -14,6 +14,7 @@ public class PowerUpCollision : MonoBehaviour {
             transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             transform.position = new Vector3(transform.position.x, 0.6f * 1.5f, transform.position.z);
             GetComponent<PlayerMovement>().poweredUp = true;
+            GetComponent<PlayerMovement>().maxSpeed = 1500f;
         }
     }
 }

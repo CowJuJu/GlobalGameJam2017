@@ -75,18 +75,27 @@ public class Level : MonoBehaviour {
                 {
                     if (ship.GetComponent<PlayerMovement>().isAlive)
                     {
-                        switch (ship.GetComponent<PlayerMovement>().player)
+                        var playerAlias = GameObject.Find("Database").GetComponent<DBScript>();
+                        var count = 1;
+                        for(; count < playerAlias.players.Count; count++)
                         {
-                            case "1":
+                            if(playerAlias.players[count - 1].ToString() == ship.GetComponent<PlayerMovement>().player)
+                            {
+                                break;
+                            }
+                        }
+                        switch (count)
+                        {
+                            case 1:
                                 GameObject.Find("Database").GetComponent<DBScript>().playerOneScore++;
                                 break;
-                            case "2":
+                            case 2:
                                 GameObject.Find("Database").GetComponent<DBScript>().playerTwoScore++;
                                 break;
-                            case "3":
+                            case 3:
                                 GameObject.Find("Database").GetComponent<DBScript>().playerThreeScore++;
                                 break;
-                            case "4":
+                            case 4:
                                 GameObject.Find("Database").GetComponent<DBScript>().playerFourScore++;
                                 break;
                         }
